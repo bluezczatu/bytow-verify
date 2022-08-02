@@ -55,6 +55,7 @@ form.addEventListener('submit', function(e){
     e.preventDefault();
     document.getElementById(`rawr1`).style.display = "none"
     document.getElementById(`rawrrr`).style.display = "none"
+	document.getElementById("rawr2").innerHTML = "prosze czekac"
     let rawrrr =document.querySelector('[name="h-captcha-response"]').value
     fetch("https://api-bytow.robloxdiscord.pl/egg",{
         headers:{
