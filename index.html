@@ -95,7 +95,9 @@ fetch("https://api-bytow.robloxdiscord.pl/egg2",{
     body: "num1="+window.location.href.split("?")[1]+"&captcha="+rawrrr,
     method: 'POST'
 }).then(e=>{
+	e.json().then(e=>{
     document.getElementById("rawrxd").innerHTML = e["a"]
+	})
 })//
 		  
 	  </script>
