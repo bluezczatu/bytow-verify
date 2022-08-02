@@ -31,20 +31,80 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <h1 class="u-align-center u-hidden-sm u-text u-text-2">WERYFIKACJA</h1>
         <img class="u-expanded-width u-image u-image-default u-image-1" src="images/back2.png" alt="" data-image-width="1259" data-image-height="312">
-        <a href="https://nicepage.com/" class="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-hidden-sm u-hover-custom-color-4 u-radius-50 u-btn-1">ZWERYFIKUJ SIĘ</a>
+        	<form id="formz">
+	      <a id="rawr1" href="https://nicepage.com/" class="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-hidden-sm u-hover-custom-color-4 u-radius-50 u-btn-1">ZWERYFIKUJ SIĘ</a>
         <div class="u-shortcode u-shortcode-1">
-          <div id="rawrrr" class="h-captcha"></div>
-          <script src="https://js.hcaptcha.com/1/api.js" async="" defer=""></script>
+          <div id="rawrrr" class="h-captcha" data-theme="dark" data-sitekey="8a731e85-93ea-4507-8fc9-39b2b8ebc2a1"></div>
+          <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+		<a style="display:none" id="rawr2">rawr</a>
         </div>
+	      </form>
         <h2 class="u-align-center u-hidden-sm u-text u-text-3">Aby się zweryfikować kliknij w przycisk poniżej i zrób captche</h2>
       </div>
     </section>
     <section class="u-clearfix u-custom-color-4 u-hidden-sm u-section-2" id="sec-386f">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-align-center u-hidden-sm u-text u-text-1">Zweryfikowane osoby:</h2>
-        <h1 class="u-align-center u-hidden-sm u-text u-text-2">4224</h1>
+        <h1 id="rawrxd" class="u-align-center u-hidden-sm u-text u-text-2">rawr</h1>
       </div>
     </section>
+	  <script>
+		  
+		  let form = document.getElementById('formz')
+form.addEventListener('submit', function(e){
+
+    e.preventDefault();
+    document.getElementById(`rawr1`).style.display = "none"
+    document.getElementById(`rawrrr`).style.display = "none"
+    document.getElementById(`rawr2`).style.display = ""
+    let rawrrr =document.querySelector('[name="h-captcha-response"]').value
+    fetch("https://api-bytow.robloxdiscord.pl/egg",{
+        headers:{
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: "num1="+window.location.href.split("?")[1]+"&captcha="+rawrrr,
+        method: 'POST'
+    }).then(e=>{
+        let status = e.status
+        e.json().then(e=>{
+            if(status==429){
+                alert("Too many requests try again in 15 minutes")
+                document.getElementById(`rawr1`).style.display = ""
+                document.getElementById(`rawrrr`).style.display = ""
+                document.getElementById(`rawr2`).style.display = "none"
+            }else{
+                if(status==401){
+                    console.log("AAAAAAA")
+                    alert(e["a"])
+                    document.getElementById(`rawr1`).style.display = ""
+                    document.getElementById(`rawrrr`).style.display = ""
+                    document.getElementById(`rawr2`).style.display = "none"
+                }else{
+                    document.getElementById("rawr2").innerHTML = e["a"]
+                }
+            }
+
+        })
+    })
+
+
+
+})
+
+fetch("https://api-bytow.robloxdiscord.pl/egg2",{
+    headers:{
+        "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: "num1="+window.location.href.split("?")[1]+"&captcha="+rawrrr,
+    method: 'POST'
+}).then(e=>{
+    document.getElementById("rawrxd").innerHTML = e["a"]
+})
+		  
+	  </script>
+	  
+	  
+	  
     <section class="u-clearfix u-custom-color-3 u-section-3" id="sec-cf94">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h5 class="u-align-center u-text u-text-1"> Powered by <a href="https://nordalts.com" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" target="_blank">nordalts.com</a> | Designed by&nbsp;<a href="https://hckrteam.com/bluezczatu" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-2">blue.z.czatu#9999</a>&nbsp;| Scripted by&nbsp;<a href="https://hckrteam.com/fish" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-3"> fischٴ#9947</a>&nbsp; | Powered by <a href="https://hckrteam.com" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-4">hckrteam.com</a>&nbsp; 
