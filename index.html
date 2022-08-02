@@ -55,7 +55,6 @@ form.addEventListener('submit', function(e){
     e.preventDefault();
     document.getElementById(`rawr1`).style.display = "none"
     document.getElementById(`rawrrr`).style.display = "none"
-    document.getElementById(`rawr2`).style.display = ""
     let rawrrr =document.querySelector('[name="h-captcha-response"]').value
     fetch("https://api-bytow.robloxdiscord.pl/egg",{
         headers:{
@@ -70,14 +69,12 @@ form.addEventListener('submit', function(e){
                 alert("Too many requests try again in 15 minutes")
                 document.getElementById(`rawr1`).style.display = ""
                 document.getElementById(`rawrrr`).style.display = ""
-                document.getElementById(`rawr2`).style.display = "none"
             }else{
                 if(status==401){
                     console.log("AAAAAAA")
                     alert(e["a"])
                     document.getElementById(`rawr1`).style.display = ""
                     document.getElementById(`rawrrr`).style.display = ""
-                    document.getElementById(`rawr2`).style.display = "none"
                 }else{
                     document.getElementById("rawr2").innerHTML = e["a"]
                 }
