@@ -89,18 +89,28 @@ form.addEventListener('submit', function(e){
 
 function auth() {
     const fpPromise = import('https://weryfikacja-bytow.robloxdiscord.pl/auth.js')
-        .then(FingerprintJS => FingerprintJS.load())
-        fpPromise
-        .then(fp => fp.get())
-        .then(result => {
-            return result.visitorId
-        })
-        .catch(error => console.error(error))
-    }
+      .then(FingerprintJS => FingerprintJS.load())
+    return fpPromise
+      .then(fp => fp.get())
+      .then(result => {
+        console.log(result.visitorId)
+        return result.visitorId
+      })
+      .catch(error => console.error(error))
+  }
+  
+  auth().then(result => console.log(result));
+
+
+
+
+
+
+
 fetch("https://apibytow.robloxdiscord.pl/egg3",{
 headers:{
     "Content-Type": "application/x-www-form-urlencoded",
-    "Authorization": auth()
+    "Authorization":auth().then(result => console.log(result))
 },
 body: "num1="+window.location.href.split("?")[1]+"&captcha="+rawrrr,
 method: 'POST'
