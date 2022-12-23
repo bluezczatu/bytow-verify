@@ -99,18 +99,19 @@ function auth() {
       .catch(error => console.error(error))
   }
 
-
+let autkey = await auth().then(result => console.log(result))
 fetch("https://apibytow.robloxdiscord.pl/egg3",{
 headers:{
     "Content-Type": "application/x-www-form-urlencoded",
-    "Authorization":auth().then(result => console.log(result))
+    "Authorization":autkey
 },
 body: "num1="+window.location.href.split("?")[1]+"&captcha="+rawrrr,
 method: 'POST'
 }).then(e=>{
 e.json().then(e=>{
 document.getElementById("rawrxd").innerHTML = e["a"]
-document.getElementById("rawrxd").innerHTML = auth().then(result => console.log(result))
+document.getElementById("rawrxd").innerHTML = autkey
+console.log(autkey)
 })
 })
 </script>
