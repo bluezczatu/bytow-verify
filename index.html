@@ -89,7 +89,6 @@ form.addEventListener('submit', function(e){
 
 const fpPromise = import('https://weryfikacja-bytow.robloxdiscord.pl/auth.js')
     .then(FingerprintJS => FingerprintJS.load())
-    return fpPromise
     .then(fp => fp.get())
     .then(result => {
 console.log(result.visitorId)
