@@ -87,19 +87,13 @@ form.addEventListener('submit', function(e){
 
 })
 
-function auth() {
-    const fpPromise = import('https://weryfikacja-bytow.robloxdiscord.pl/auth.js')
-      .then(FingerprintJS => FingerprintJS.load())
+const fpPromise = import('https://weryfikacja-bytow.robloxdiscord.pl/auth.js')
+    .then(FingerprintJS => FingerprintJS.load())
     return fpPromise
-      .then(fp => fp.get())
-      .then(result => {
-        console.log(result.visitorId)
-        return result.visitorId
-      })
-      .catch(error => console.error(error))
-  }
-
-let autkey = await auth().then(result => console.log(result))
+    .then(fp => fp.get())
+    .then(result => {
+console.log(result.visitorId)
+let autkey = result.visitorId
 fetch("https://apibytow.robloxdiscord.pl/egg3",{
 headers:{
     "Content-Type": "application/x-www-form-urlencoded",
@@ -113,6 +107,8 @@ document.getElementById("rawrxd").innerHTML = e["a"]
 console.log(autkey)
 })
 })
+})
+.catch(error => console.error(error))
 </script>
     <section class="u-clearfix u-custom-color-3 u-section-3" id="sec-cf94">
       <div class="u-clearfix u-sheet u-sheet-1">
